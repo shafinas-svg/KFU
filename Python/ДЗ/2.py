@@ -68,16 +68,16 @@ def add_rating():
     else:
         print("Книга не найдена")
 
-def year_book():
+def year_book():    
     s_year = int(input("Введите год: "))
     found = False
     
-    for name, info in library.items():
-        if info["year"] > s_year:
+    for name in library:
+        if library[name]["year"] > s_year:
             print(f"Название: {name}")
-            print(f"Автор: {info['author']}")
-            print(f"Год: {info['year']}")
-            print(f"Оценки: {info['ratings']}")
+            print(f"Автор: {library[name]['author']}")
+            print(f"Год: {library[name]['year']}")
+            print(f"Оценки: {library[name]['ratings']}")
             print("-" * 30)
             found = True
     
