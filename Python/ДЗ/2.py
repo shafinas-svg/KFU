@@ -88,13 +88,15 @@ def rating_book():
     s_rating = float(input("Введите минимальный рейтинг: "))
     found = False
     
-    for name, info in library.items():
-        avg_rating = sum(info["ratings"]) / len(info["ratings"])
+    for name in library:
+        ratings_list = library[name]["ratings"]
+        avg_rating = sum(ratings_list) / len(ratings_list)
+        
         if avg_rating > s_rating:
             print(f"Название: {name}")
-            print(f"Автор: {info['author']}")
-            print(f"Год: {info['year']}")
-            print(f"Оценки: {info['ratings']}")
+            print(f"Автор: {library[name]['author']}")
+            print(f"Год: {library[name]['year']}")
+            print(f"Оценки: {library[name]['ratings']}")
             print(f"Средний рейтинг: {avg_rating:.1f}")
             print("-" * 30)
             found = True
