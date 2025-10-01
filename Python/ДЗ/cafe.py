@@ -134,6 +134,7 @@ while True:
                 make_order()
             elif user == 9:
                 print("Выход из программы")
+                break
             else:
                 print("Неверный выбор. Введите число от 1 до 9.")
     except ValueError:
