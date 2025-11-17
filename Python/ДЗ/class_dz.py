@@ -1,18 +1,23 @@
 import datetime
 
-
+# Продукт
 class Product:
     def __init__(self, title, energy_value):
         self.title = title
         self.energy_value = energy_value
 
-
+# блюдо
 class Dish:
     def __init__(self, dish_name, cost, ingredients):
         self.dish_name = dish_name
         self.cost = cost
         self.ingredients = ingredients
         self.energy = self.compute_energy()
+        self.__self_cost = cost/3
+
+    def self_result(self):
+        return self.__self_cost
+
 
     def compute_energy(self):
         result = 0
@@ -20,12 +25,12 @@ class Dish:
             result += (prod.energy_value * amount) / 100
         return result
 
-
+# Клиент
 class Client:
     def __init__(self, client_name):
         self.client_name = client_name
 
-
+# Покупка
 class Purchase:
     def __init__(self, buyer):
         self.dishes = []
@@ -34,6 +39,11 @@ class Purchase:
 
     def include_dish(self, dish):
         self.dishes.append(dish)
+
+    def del_dish(self,dish):
+        if dish in self.dishes:
+            self.dishes.remove(dish)
+
 
     def compute_sum(self):
         return sum(dish.cost for dish in self.dishes)
@@ -62,6 +72,13 @@ client = Client("Мария")
 purchase = Purchase(client)
 purchase.include_dish(dish1)
 purchase.include_dish(dish2)
+print([i.dish_name for i in purchase.dishes])
+purchase.del_dish(dish2)
+print([i.dish_name for i in purchase.dishes])
 
-print(purchase.compute_sum())
+# Сумма заказа
+print(purchase.compute_sum()) 
+# граммовка
 print(purchase.compute_total_mass())
+
+print(dish1.self_result())
