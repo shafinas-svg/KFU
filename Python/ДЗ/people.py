@@ -51,6 +51,10 @@ print(max_salary['name'])
 
 
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 print('Задание 4')
 print('-'*30)
 # Часть 4 — lambda
